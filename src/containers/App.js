@@ -5,6 +5,7 @@ import SearchBox from "../components/SearchBox";
 import CardList from "../components/CardList";
 import Scroll from "../components/Scroll";
 import ErrorBoundry from "../components/ErrorBoundry";
+import Header from "../components/Header";
 import { setSearchField, requestRobots } from "../action";
 import "./app.css";
 
@@ -24,7 +25,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 class App extends Component {
-
   componentDidMount() {
     this.props.onRequestRobots();
   }
@@ -38,7 +38,7 @@ class App extends Component {
       <h1 className="tc f1">Loading</h1>
     ) : (
       <div className="tc">
-        <h1 className="f1">RoboFriends</h1>
+        <Header />
         <SearchBox searchChange={onSearchChange} />
         <Scroll>
           <ErrorBoundry>
@@ -50,4 +50,7 @@ class App extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
